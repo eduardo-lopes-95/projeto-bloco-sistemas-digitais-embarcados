@@ -2,67 +2,67 @@
  "Device" : "GW1NSR-4C",
  "Files" : [
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/dvi_tx/dvi_tx.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/dvi_tx/dvi_tx.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/gowin_pllvr/GW_PLLVR.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/fsm/detector_top.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/gowin_pllvr/TMDS_PLLVR.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/fsm/fsm_detector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/hyperram_memory_interface/hyperram_memory_interface.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/fsm/pixel_counter.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/ov2640/I2C_Interface.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/fsm/tb_fsm_detector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/ov2640/OV2640_Controller.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/gowin_pllvr/GW_PLLVR.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/ov2640/OV2640_Registers.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/gowin_pllvr/TMDS_PLLVR.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/syn_code/syn_gen.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/hyperram_memory_interface/hyperram_memory_interface.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/tb_detector.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/ov2640/I2C_Interface.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/testpattern.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/ov2640/OV2640_Controller.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/video_frame_buffer/video_frame_buffer.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/ov2640/OV2640_Registers.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/video_top.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/syn_code/syn_gen.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/fsm/detector_top.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/tb_detector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/fsm/fsm_detector.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/testpattern.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/fsm/pixel_counter.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/video_frame_buffer/video_frame_buffer.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/src/fsm/tb_fsm_detector.v",
+   "Path" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/src/video_top.v",
    "Type" : "verilog"
   }
  ],
@@ -70,7 +70,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/verilog_tp2/assessment/impl/temp/rtl_parser.result",
+ "ResultFile" : "C:/Users/TH3785/Documents/Infnet/projeto-bloco-sistemas-digitais-embarcados/tp3/verilog_tp3/assessment/impl/temp/rtl_parser.result",
  "Top" : "video_top",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"

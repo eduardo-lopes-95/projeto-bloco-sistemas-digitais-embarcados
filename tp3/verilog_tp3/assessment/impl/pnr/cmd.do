@@ -1,9 +1,9 @@
--d C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\impl\gwsynthesis\assessment.vg
+-d C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\impl\gwsynthesis\assessment.vg
 -p GW1NSR-4C-QFN48P-6
 -pn GW1NSR-LV4CQN48PC6/I5
--cst C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dk_video.cst
--cfg C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\impl\pnr\device.cfg
--sdc C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dk_video.sdc
+-cst C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dk_video.cst
+-cfg C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\impl\pnr\device.cfg
+-sdc C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dk_video.sdc
 -bit
 -tr
 -ph

@@ -1,29 +1,29 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dvi_tx\dvi_tx.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\GW_PLLVR.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\TMDS_PLLVR.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\I2C_Interface.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Controller.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Registers.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\syn_code\syn_gen.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\tb_detector.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\testpattern.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_frame_buffer\video_frame_buffer.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v'
-Undeclared symbol 'sys_resetn', assumed default net type 'wire'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":122)
-Undeclared symbol 'key_flag', assumed default net type 'wire'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":216)
-WARN  (EX3628) : Redeclaration of ANSI port 'key_flag' is not allowed("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":451)
-WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":460)
-WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":463)
-WARN  (EX3801) : Parameter 'count_ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":435)
-WARN  (EX3801) : Parameter 'count_20ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":437)
-WARN  (EX3801) : Parameter 'count_500ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":438)
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\detector_top.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\fsm_detector.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\pixel_counter.v'
-Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\tb_fsm_detector.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dvi_tx\dvi_tx.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\detector_top.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\fsm_detector.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\pixel_counter.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\tb_fsm_detector.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\GW_PLLVR.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\TMDS_PLLVR.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\I2C_Interface.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Controller.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Registers.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\syn_code\syn_gen.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\tb_detector.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\testpattern.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_frame_buffer\video_frame_buffer.v'
+Analyzing Verilog file 'C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v'
+Undeclared symbol 'sys_resetn', assumed default net type 'wire'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":122)
+Undeclared symbol 'key_flag', assumed default net type 'wire'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":216)
+WARN  (EX3628) : Redeclaration of ANSI port 'key_flag' is not allowed("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":451)
+WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":460)
+WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":463)
+WARN  (EX3801) : Parameter 'count_ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":435)
+WARN  (EX3801) : Parameter 'count_20ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":437)
+WARN  (EX3801) : Parameter 'count_500ms' becomes localparam in 'key_flag' with formal parameter declaration list("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":438)
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
@@ -38,47 +38,47 @@ WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
 WARN  (EX3589) : Keyword 'unsigned' is not allowed here in this mode of Verilog
-WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\tb_fsm_detector.v":154)
-WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\tb_fsm_detector.v":332)
-WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\tb_fsm_detector.v":345)
-Compiling module 'video_top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":1)
-Compiling module 'testpattern'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\testpattern.v":17)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_total'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":127)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":128)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_bporch'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":129)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_res'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":130)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_total'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":131)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":132)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_bporch'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":133)
-WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_res'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":134)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":157)
-Compiling module 'Reset_Sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":406)
-Compiling module 'OV2640_Controller'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Controller.v":1)
-Compiling module 'OV2640_Registers'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Registers.v":1)
-WARN  (EX3791) : Expression size 10 truncated to fit in target size 9("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Registers.v":36)
-Compiling module 'I2C_Interface(SID=8'h60)'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\I2C_Interface.v":14)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\I2C_Interface.v":81)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\I2C_Interface.v":166)
-Compiling module 'key_flag'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":425)
-WARN  (EX3791) : Expression size 31 truncated to fit in target size 30("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":457)
-Compiling module 'Video_Frame_Buffer_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_frame_buffer\video_frame_buffer.v":3014)
-Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_frame_buffer\video_frame_buffer.v":3013)
-Compiling module 'GW_PLLVR'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\GW_PLLVR.v":8)
-Compiling module 'HyperRAM_Memory_Interface_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3735)
-Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-WARN  (EX1998) : Net '**' does not have a driver("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-Compiling module 'syn_gen'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\syn_code\syn_gen.v":1)
-Compiling module 'TMDS_PLLVR'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\TMDS_PLLVR.v":9)
-Compiling module 'DVI_TX_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dvi_tx\dvi_tx.v":1048)
-Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dvi_tx\dvi_tx.v":1047)
+WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\tb_fsm_detector.v":154)
+WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\tb_fsm_detector.v":332)
+WARN  (EX3012) : Empty statement in sequential block("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\tb_fsm_detector.v":345)
+Compiling module 'video_top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":1)
+Compiling module 'testpattern'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\testpattern.v":17)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_total'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":127)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":128)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_bporch'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":129)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_h_res'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":130)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_total'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":131)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":132)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_bporch'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":133)
+WARN  (EX3670) : Actual bit length 16 differs from formal bit length 12 for port 'I_v_res'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":134)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":157)
+Compiling module 'Reset_Sync'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":406)
+Compiling module 'OV2640_Controller'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Controller.v":1)
+Compiling module 'OV2640_Registers'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Registers.v":1)
+WARN  (EX3791) : Expression size 10 truncated to fit in target size 9("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Registers.v":36)
+Compiling module 'I2C_Interface(SID=8'h60)'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\I2C_Interface.v":14)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\I2C_Interface.v":81)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\I2C_Interface.v":166)
+Compiling module 'key_flag'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":425)
+WARN  (EX3791) : Expression size 31 truncated to fit in target size 30("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":457)
+Compiling module 'Video_Frame_Buffer_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_frame_buffer\video_frame_buffer.v":3014)
+Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_frame_buffer\video_frame_buffer.v":3013)
+Compiling module 'GW_PLLVR'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\GW_PLLVR.v":8)
+Compiling module 'HyperRAM_Memory_Interface_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3735)
+Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX1998) : Net '**' does not have a driver("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+Compiling module 'syn_gen'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\syn_code\syn_gen.v":1)
+Compiling module 'TMDS_PLLVR'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\TMDS_PLLVR.v":9)
+Compiling module 'DVI_TX_Top'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dvi_tx\dvi_tx.v":1048)
+Compiling module '**'("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dvi_tx\dvi_tx.v":1047)
 NOTE  (EX0101) : Current top module is "video_top"
-WARN  (EX0211) : The output port "rd_data[10]" of module "~hpram_wd.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-WARN  (EX0211) : The output port "rd_data[5]" of module "~hpram_wd.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-WARN  (EX0211) : The output port "rd_data[10]" of module "~hpram_lane.HyperRAM_Memory_Interface_Top__Z1" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-WARN  (EX0211) : The output port "rd_data[5]" of module "~hpram_lane.HyperRAM_Memory_Interface_Top__Z1" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
-WARN  (EX0211) : The output port "addr_d[19]" of module "~hpram_init.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX0211) : The output port "rd_data[10]" of module "~hpram_wd.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX0211) : The output port "rd_data[5]" of module "~hpram_wd.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX0211) : The output port "rd_data[10]" of module "~hpram_lane.HyperRAM_Memory_Interface_Top__Z1" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX0211) : The output port "rd_data[5]" of module "~hpram_lane.HyperRAM_Memory_Interface_Top__Z1" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
+WARN  (EX0211) : The output port "addr_d[19]" of module "~hpram_init.HyperRAM_Memory_Interface_Top_" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v":3734)
 [5%] Running netlist conversion ...
-WARN  (CV0020) : Input PIXDATA[3:0] is unused("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v":9)
+WARN  (CV0020) : Input PIXDATA[3:0] is unused("C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v":9)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
@@ -94,6 +94,6 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-[95%] Generate netlist file "C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\impl\gwsynthesis\assessment.vg" completed
-[100%] Generate report file "C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\impl\gwsynthesis\assessment_syn.rpt.html" completed
+[95%] Generate netlist file "C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\impl\gwsynthesis\assessment.vg" completed
+[100%] Generate report file "C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\impl\gwsynthesis\assessment_syn.rpt.html" completed
 GowinSynthesis finish

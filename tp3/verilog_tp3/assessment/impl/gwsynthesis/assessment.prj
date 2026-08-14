@@ -4,28 +4,28 @@
     <Version>beta</Version>
     <Device id="GW1NSR-4C" package="QFN48P" speed="6" partNumber="GW1NSR-LV4CQN48PC6/I5"/>
     <FileList>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\dvi_tx\dvi_tx.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\GW_PLLVR.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\gowin_pllvr\TMDS_PLLVR.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\I2C_Interface.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Controller.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\ov2640\OV2640_Registers.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\syn_code\syn_gen.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\tb_detector.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\testpattern.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_frame_buffer\video_frame_buffer.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\video_top.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\detector_top.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\fsm_detector.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\pixel_counter.v" type="verilog"/>
-        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\src\fsm\tb_fsm_detector.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\dvi_tx\dvi_tx.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\detector_top.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\fsm_detector.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\pixel_counter.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\fsm\tb_fsm_detector.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\GW_PLLVR.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\gowin_pllvr\TMDS_PLLVR.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\hyperram_memory_interface\hyperram_memory_interface.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\I2C_Interface.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Controller.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\ov2640\OV2640_Registers.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\syn_code\syn_gen.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\tb_detector.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\testpattern.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_frame_buffer\video_frame_buffer.v" type="verilog"/>
+        <File path="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\src\video_top.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
         <Option type="global_freq" value="50.000"/>
         <Option type="looplimit" value="2000"/>
-        <Option type="output_file" value="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\verilog_tp2\assessment\impl\gwsynthesis\assessment.vg"/>
+        <Option type="output_file" value="C:\Users\TH3785\Documents\Infnet\projeto-bloco-sistemas-digitais-embarcados\tp3\verilog_tp3\assessment\impl\gwsynthesis\assessment.vg"/>
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
         <Option type="top_module" value="video_top"/>

@@ -16,13 +16,21 @@
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# TOOLCHAIN: Cross-compiler ARM64 para Linux
-# Instalação (WSL/Ubuntu): sudo apt install gcc-aarch64-linux-gnu
+# TOOLCHAIN: Compilação ARM64
 # ------------------------------------------------------------------------------
-PREFIX  = aarch64-linux-gnu
-AS      = $(PREFIX)-as
-LD      = $(PREFIX)-ld
-OBJDUMP = $(PREFIX)-objdump
+# Para CROSS-COMPILAÇÃO (em x86/WSL): make all PREFIX=aarch64-linux-gnu
+# Para compilação NATIVA (no Raspberry Pi): make all (PREFIX vazio por padrão)
+# ------------------------------------------------------------------------------
+PREFIX  ?=
+ifdef PREFIX
+  TOOL_PREFIX = $(PREFIX)-
+else
+  TOOL_PREFIX =
+endif
+
+AS      = $(TOOL_PREFIX)as
+LD      = $(TOOL_PREFIX)ld
+OBJDUMP = $(TOOL_PREFIX)objdump
 GDB     = gdb-multiarch
 QEMU    = qemu-aarch64
 

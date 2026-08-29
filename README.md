@@ -75,8 +75,7 @@ projeto-bloco-sistemas-digitais-embarcados/
     │   ├── whatsapp_api.py         ← envio de notificação via Twilio
     │   ├── start_detector.sh       ← script que sobe todo o pipeline no Pi
     │   ├── Makefile                ← build/disasm/debug do Assembly (as, ld, objdump, gdb)
-    │   ├── .env.example            ← template das variáveis (Twilio + números)
-    │   └── .env                    ← credenciais e números reais (NÃO versionado)
+    │   └── .env.example            ← template das variáveis (Twilio + números)
     ├── verilog_tp4/
     │   └── assessment/             ← projeto Gowin (abrir assessment.gprj)
     │       └── src/

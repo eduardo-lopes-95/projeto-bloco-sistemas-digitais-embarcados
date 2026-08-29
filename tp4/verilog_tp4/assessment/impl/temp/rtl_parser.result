@@ -1,0 +1,206 @@
+[
+ {
+  "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/tb_detector.v",
+  "InstLine" : 3,
+  "InstName" : "tb_detector",
+  "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/tb_detector.v",
+  "ModuleLine" : 3,
+  "ModuleName" : "tb_detector"
+ },
+ {
+  "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/tb_testpattern.v",
+  "InstLine" : 3,
+  "InstName" : "tb_testpattern",
+  "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/tb_testpattern.v",
+  "ModuleLine" : 3,
+  "ModuleName" : "tb_testpattern",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/tb_testpattern.v",
+    "InstLine" : 13,
+    "InstName" : "dut",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/testpattern.v",
+    "ModuleLine" : 17,
+    "ModuleName" : "testpattern"
+   }
+  ]
+ },
+ {
+  "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+  "InstLine" : 1,
+  "InstName" : "video_top",
+  "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "video_top",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 119,
+    "InstName" : "testpattern_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/testpattern.v",
+    "ModuleLine" : 17,
+    "ModuleName" : "testpattern"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 164,
+    "InstName" : "u_Reset_Sync",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "ModuleLine" : 502,
+    "ModuleName" : "Reset_Sync"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 171,
+    "InstName" : "u_OV2640_Controller",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/ov2640/OV2640_Controller.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "OV2640_Controller",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/ov2640/OV2640_Controller.v",
+      "InstLine" : 30,
+      "InstName" : "LUT",
+      "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/ov2640/OV2640_Registers.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "OV2640_Registers"
+     },
+     {
+      "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/ov2640/OV2640_Controller.v",
+      "InstLine" : 41,
+      "InstName" : "I2C",
+      "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/ov2640/I2C_Interface.v",
+      "ModuleLine" : 14,
+      "ModuleName" : "I2C_Interface"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 212,
+    "InstName" : "key_flag_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "ModuleLine" : 521,
+    "ModuleName" : "key_flag"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 221,
+    "InstName" : "Video_Frame_Buffer_Top_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_frame_buffer/video_frame_buffer.v",
+    "ModuleLine" : 3014,
+    "ModuleName" : "Video_Frame_Buffer_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_frame_buffer/video_frame_buffer.v",
+      "InstLine" : 3065,
+      "InstName" : "vfb_hyperram_wrapper_inst",
+      "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_frame_buffer/video_frame_buffer.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "~vfb_hyperram_wrapper.Video_Frame_Buffer_Top"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 253,
+    "InstName" : "GW_PLLVR_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/gowin_pllvr/GW_PLLVR.v",
+    "ModuleLine" : 8,
+    "ModuleName" : "GW_PLLVR"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 260,
+    "InstName" : "HyperRAM_Memory_Interface_Top_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/hyperram_memory_interface/hyperram_memory_interface.v",
+    "ModuleLine" : 3735,
+    "ModuleName" : "HyperRAM_Memory_Interface_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/hyperram_memory_interface/hyperram_memory_interface.v",
+      "InstLine" : 3810,
+      "InstName" : "u_hpram_top",
+      "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/hyperram_memory_interface/hyperram_memory_interface.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "~hpram_top.HyperRAM_Memory_Interface_Top_"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 285,
+    "InstName" : "syn_gen_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/syn_code/syn_gen.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "syn_gen"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 337,
+    "InstName" : "TMDS_PLLVR_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/gowin_pllvr/TMDS_PLLVR.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "TMDS_PLLVR"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 382,
+    "InstName" : "u_rgb2gray",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/vision_pipeline/rgb2gray.v",
+    "ModuleLine" : 12,
+    "ModuleName" : "rgb2gray"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 404,
+    "InstName" : "u_roi_window",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/vision_pipeline/roi_window.v",
+    "ModuleLine" : 22,
+    "ModuleName" : "roi_window"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 419,
+    "InstName" : "u_erosion",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/vision_pipeline/erosion_3x3.v",
+    "ModuleLine" : 28,
+    "ModuleName" : "erosion_3x3"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 438,
+    "InstName" : "u_detection_engine",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/vision_pipeline/detection_engine.v",
+    "ModuleLine" : 24,
+    "ModuleName" : "detection_engine"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 461,
+    "InstName" : "u_video_overlay",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/vision_pipeline/video_overlay.v",
+    "ModuleLine" : 21,
+    "ModuleName" : "video_overlay"
+   },
+   {
+    "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/video_top.v",
+    "InstLine" : 483,
+    "InstName" : "DVI_TX_Top_inst",
+    "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/dvi_tx/dvi_tx.v",
+    "ModuleLine" : 1048,
+    "ModuleName" : "DVI_TX_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/dvi_tx/dvi_tx.v",
+      "InstLine" : 1079,
+      "InstName" : "rgb2dvi_inst",
+      "ModuleFile" : "C:/Users/Dudu/Documents/infnet/tp4/verilog_tp4/assessment/src/dvi_tx/dvi_tx.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "~rgb2dvi.DVI_TX_Top"
+     }
+    ]
+   }
+  ]
+ }
+]

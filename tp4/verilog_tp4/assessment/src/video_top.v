@@ -450,8 +450,13 @@ detection_engine #(
 video_overlay #(
     .H_RES        (1280),
     .V_RES        (720),
-    .IMG_OFFSET_X (320),    // Centralização horizontal: (1280-640)/2
-    .IMG_OFFSET_Y (120),    // Centralização vertical: (720-480)/2
+    // A imagem da câmera (640x480) é lida a partir do canto superior-esquerdo
+    // da área ativa (ver O_rden em syn_gen), NÃO centralizada. Os contadores
+    // internos do overlay (h_cnt/v_cnt) também começam em (0,0) no início da
+    // área ativa, então o offset da imagem deve ser (0,0) para o bounding box
+    // cair exatamente sobre a ROI real da câmera.
+    .IMG_OFFSET_X (0),
+    .IMG_OFFSET_Y (0),
     .ROI_X0       (160),
     .ROI_Y0       (120),
     .ROI_WIDTH    (320),

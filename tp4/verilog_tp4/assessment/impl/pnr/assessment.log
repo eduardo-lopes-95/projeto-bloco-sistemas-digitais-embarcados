@@ -1,7 +1,7 @@
-Reading netlist file: "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\gwsynthesis\assessment.vg"
-Parsing netlist file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\gwsynthesis\assessment.vg" completed
+Reading netlist file: "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\gwsynthesis\assessment.vg"
+Parsing netlist file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\gwsynthesis\assessment.vg" completed
 Processing netlist completed
-Reading constraint file: "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\src\dk_video.cst"
+Reading constraint file: "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\src\dk_video.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -24,10 +24,10 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\pnr\assessment.power.html" completed
-Generate file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\pnr\assessment.pin.html" completed
-Generate file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\pnr\assessment.rpt.html" completed
-Generate file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\pnr\assessment.rpt.txt" completed
-Generate file "C:\Users\Dudu\Documents\infnet\tp4\verilog_tp4\assessment\impl\pnr\assessment.tr.html" completed
-Fri Aug 28 21:19:54 2026
+Generate file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\pnr\assessment.power.html" completed
+Generate file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\pnr\assessment.pin.html" completed
+Generate file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\pnr\assessment.rpt.html" completed
+Generate file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\pnr\assessment.rpt.txt" completed
+Generate file "C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\tp4\verilog_tp4\assessment\impl\pnr\assessment.tr.html" completed
+Fri Aug 28 23:38:15 2026
 

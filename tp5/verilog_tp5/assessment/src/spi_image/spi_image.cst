@@ -1,0 +1,33 @@
+// Physical constraints for spi_image_top on Tang Nano 4K (GW1NSR-LV4CQN48PC6/I5).
+// Package pin numbers taken from schematic Tang_Nano_4K_3603 (U7, QN48).
+// SPI signals live on BANK1 (VCCO = 3.3 V, net DCDC2_3V3), electrically
+// compatible with the Raspberry Pi 3.3 V header. Do NOT move these to BANK2
+// (2.5 V) or BANK3 (1.8 V).
+
+// ---- System clock: 27 MHz onboard oscillator (SYS_CLK) ----
+IO_LOC  "I_clk" 45;                                  // IOT13A/LPLL_T_in
+IO_PORT "I_clk" IO_TYPE=LVCMOS33 PULL_MODE=NONE;
+
+// ---- Reset: onboard button KEY1 (active-low, BANK3 1.8 V, internal only) ----
+IO_LOC  "I_rst_n" 14;                                // IOB4B / KEY1
+IO_PORT "I_rst_n" IO_TYPE=LVCMOS18 PULL_MODE=UP;
+
+// ---- SPI slave, connected to Raspberry Pi SPI0 / CE0 (BANK1, 3.3 V) ----
+IO_LOC  "I_spi_cs_n" 40;                             // IOT26B  <- RPi pin 24 (CE0)
+IO_PORT "I_spi_cs_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC  "I_spi_sclk" 41;                             // IOT20A  <- RPi pin 23 (SCLK)
+IO_PORT "I_spi_sclk" IO_TYPE=LVCMOS33 PULL_MODE=NONE;
+
+IO_LOC  "I_spi_mosi" 42;                             // IOT20B  <- RPi pin 19 (MOSI)
+IO_PORT "I_spi_mosi" IO_TYPE=LVCMOS33 PULL_MODE=NONE;
+
+IO_LOC  "O_spi_miso" 43;                             // IOT17A  -> RPi pin 21 (MISO)
+IO_PORT "O_spi_miso" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8;
+
+// ---- Status outputs (BANK1 3.3 V, free header GPIO for probe/external LED) ----
+IO_LOC  "O_alert" 39;                                // IOT26A
+IO_PORT "O_alert" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8;
+
+IO_LOC  "O_result_valid" 44;                         // IOT17B
+IO_PORT "O_result_valid" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8;

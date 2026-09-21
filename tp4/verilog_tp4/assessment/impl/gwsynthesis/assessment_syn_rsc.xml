@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="spi_image_top" Register="954" Alu="147" Lut="1058" Bsram="1" T_Register="1207(954)" T_Alu="248(147)" T_Lut="1329(1058)" T_Bsram="1(1)">
+ <SubModule name="spi" Register="48" Lut="125" T_Register="48(48)" T_Lut="125(125)"/>
+ <SubModule name="detector" Register="205" Alu="101" Lut="146" T_Register="205(205)" T_Alu="101(101)" T_Lut="146(146)"/>
+</Module>

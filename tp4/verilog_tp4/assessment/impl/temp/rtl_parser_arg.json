@@ -1,0 +1,25 @@
+{
+ "Device" : "GW1NSR-4C",
+ "Files" : [
+  {
+   "Path" : "C:/Users/TH3785/Documents/Projects/pb-backup/pb/verilog/assessment/src/spi_image/spi_image_top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/TH3785/Documents/Projects/pb-backup/pb/verilog/assessment/src/spi_image/spi_slave_mode0.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/TH3785/Documents/Projects/pb-backup/pb/verilog/assessment/src/spi_image/gray_bowl_detector.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "C:/Users/TH3785/Documents/Projects/pb-backup/pb/verilog/assessment/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}

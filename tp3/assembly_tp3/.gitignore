@@ -1,6 +1,0 @@
-.env
-build/
-disasm/
-*.o
-*.vvp
-*.vcd

@@ -4,11 +4,12 @@ tp*\verilog_tp*\assessment\assessment.fs
 tp*\assembly_tp*\twilio_2FA_recovery_code.txt
 tp*\.env
 tp*/build/
-tp*/disasm/ pb\assembly\build
+tp*/disasm/ 
 tp*\*.o
 tp*\*.vvp
 tp*\*.vcd
 pb\build/
+pb\assembly\build
 
 # Local service credentials and environments (example files stay tracked).
 pb/**/.env

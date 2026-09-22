@@ -1,0 +1,25 @@
+[Unit]
+Description=Bowl camera capture and FPGA SPI classification
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=pi
+SupplementaryGroups=spi
+WorkingDirectory=/home/pi/pb
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/home/pi/pb/camera.env
+RuntimeDirectory=bowl
+RuntimeDirectoryMode=0700
+UMask=0077
+ExecStartPre=/bin/bash /home/pi/pb/start_bowl.sh --check-camera
+ExecStart=/home/pi/pb/.venv/bin/python /home/pi/pb/camera_capture.py --url ${CAMERA_URL} --threshold ${THRESHOLD} --interval ${CAPTURE_INTERVAL} --client /home/pi/pb/build/bin/spi_image_client --device /dev/spidev0.0 --output /run/bowl/result.json $CROP_ARGS
+TimeoutStartSec=45
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

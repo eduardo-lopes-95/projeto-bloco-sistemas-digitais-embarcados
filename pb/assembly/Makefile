@@ -68,6 +68,7 @@ run: $(BIN_DIR)/$(BIN)
 
 test:
 	$(PYTHON) -m unittest discover -s tests -p test_pipeline.py -v
+	$(PYTHON) -m unittest discover -s tests -p test_preflight.py -v
 
 test-assembly: all
 	$(PYTHON) tests/test_assembly_client.py

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW1NSR-4C" package="QFN48P" speed="6" partNumber="GW1NSR-LV4CQN48PC6/I5"/>
+    <FileList>
+        <File path="C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\pb\verilog\assessment\src\spi_image\spi_image_top.v" type="verilog"/>
+        <File path="C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\pb\verilog\assessment\src\spi_image\spi_slave_mode0.v" type="verilog"/>
+        <File path="C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\pb\verilog\assessment\src\spi_image\gray_bowl_detector.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="global_freq" value="50.000"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="C:\Users\Dudu\Documents\infnet\projeto-bloco-sistemas-digitais-embarcados\pb\verilog\assessment\impl\gwsynthesis\assessment.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="0"/>
+        <Option type="vcc" value="1.2"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>

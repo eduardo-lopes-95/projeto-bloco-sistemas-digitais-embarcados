@@ -1,0 +1,22 @@
+[Unit]
+Description=Bowl WhatsApp notification via Twilio
+Wants=network-online.target bowl-capture.service
+After=network-online.target bowl-capture.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/pb
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/home/pi/pb/whatsapp.env
+StateDirectory=bowl-notifier
+StateDirectoryMode=0700
+UMask=0077
+ExecStart=/home/pi/pb/.venv/bin/python /home/pi/pb/bowl_notifier.py --input /run/bowl/result.json --state /var/lib/bowl-notifier/state.json --confirm 3 --rearm 2 --max-age 10 --send
+Restart=always
+RestartSec=10
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

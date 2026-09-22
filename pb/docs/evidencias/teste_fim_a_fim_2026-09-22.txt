@@ -1,0 +1,30 @@
+pi@pi:~/pb $ journalctl -u bowl-capture -u bowl-notifier -f
+Sep 22 02:00:29 pi systemd[1]: bowl-capture.service: Scheduled restart job, restart counter is at 858.
+Sep 22 02:00:29 pi systemd[1]: Starting bowl-capture.service - Bowl camera capture and FPGA SPI classification...
+Sep 22 02:00:30 pi bash[8304]: Camera indisponivel ou imagem invalida (URLError); nova tentativa pelo servico.
+Sep 22 02:00:30 pi systemd[1]: bowl-capture.service: Control process exited, code=exited, status=1/FAILURE
+Sep 22 02:00:30 pi systemd[1]: bowl-capture.service: Failed with result 'exit-code'.
+Sep 22 02:00:30 pi systemd[1]: Failed to start bowl-capture.service - Bowl camera capture and FPGA SPI classification.
+Sep 22 02:00:35 pi systemd[1]: bowl-capture.service: Scheduled restart job, restart counter is at 859.
+Sep 22 02:00:35 pi systemd[1]: Starting bowl-capture.service - Bowl camera capture and FPGA SPI classification...
+Sep 22 02:00:39 pi bash[8309]: Camera OK: snapshot convertido para 19200 pixels GRAY8.
+Sep 22 02:00:39 pi systemd[1]: Started bowl-capture.service - Bowl camera capture and FPGA SPI classification.
+Sep 22 02:00:42 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 1, "capture_monotonic_ns": 11820808837558, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 16083, "error": "NONE", "publish_monotonic_ns": 11823610182005}
+Sep 22 02:00:45 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 2, "capture_monotonic_ns": 11823612179342, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 16075, "error": "NONE", "publish_monotonic_ns": 11826309878109}
+Sep 22 02:00:47 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 3, "capture_monotonic_ns": 11826311580551, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 16077, "error": "NONE", "publish_monotonic_ns": 11828965048470}
+Sep 22 02:00:50 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 4, "capture_monotonic_ns": 11828966671641, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 16086, "error": "NONE", "publish_monotonic_ns": 11831596797332}
+Sep 22 02:00:53 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 5, "capture_monotonic_ns": 11831598407899, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 16081, "error": "NONE", "publish_monotonic_ns": 11834260239701}
+^C
+pi@pi:~/pb $ journalctl -u bowl-capture -u bowl-notifier -f
+Sep 22 02:02:32 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 42, "capture_monotonic_ns": 11931314203756, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 4035, "error": "NONE", "publish_monotonic_ns": 11933943600626}
+Sep 22 02:02:35 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 43, "capture_monotonic_ns": 11933945931973, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6962, "error": "NONE", "publish_monotonic_ns": 11936644412080}
+Sep 22 02:02:38 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 44, "capture_monotonic_ns": 11936646067335, "valid": true, "bowl_state": "empty", "pixels_total": 19200, "pixels_bright": 10525, "error": "NONE", "publish_monotonic_ns": 11939510509637}
+Sep 22 02:02:41 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 45, "capture_monotonic_ns": 11939513046503, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 5538, "error": "NONE", "publish_monotonic_ns": 11942275140101}
+Sep 22 02:02:43 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 46, "capture_monotonic_ns": 11942276865721, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 7779, "error": "NONE", "publish_monotonic_ns": 11945045784010}
+Sep 22 02:02:46 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 47, "capture_monotonic_ns": 11945048245616, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 2812, "error": "NONE", "publish_monotonic_ns": 11947785411013}
+Sep 22 02:02:49 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 48, "capture_monotonic_ns": 11947787036112, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 4971, "error": "NONE", "publish_monotonic_ns": 11950618911698}
+Sep 22 02:02:52 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 49, "capture_monotonic_ns": 11950621546325, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6019, "error": "NONE", "publish_monotonic_ns": 11953339859905}
+Sep 22 02:02:55 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 50, "capture_monotonic_ns": 11953341600993, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6564, "error": "NONE", "publish_monotonic_ns": 11956344770928}
+Sep 22 02:02:58 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 51, "capture_monotonic_ns": 11956347193733, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6391, "error": "NONE", "publish_monotonic_ns": 11959134194958}
+Sep 22 02:03:00 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 52, "capture_monotonic_ns": 11959135818963, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6437, "error": "NONE", "publish_monotonic_ns": 11961825940990}
+Sep 22 02:03:03 pi python[8332]: {"schema_version": 1, "session_id": "552f761d40318ce8", "frame_id": 53, "capture_monotonic_ns": 11961828448013, "valid": true, "bowl_state": "not_empty", "pixels_total": 19200, "pixels_bright": 6263, "error": "NONE", "publish_monotonic_ns": 11964624563270}

@@ -16,18 +16,28 @@ import tempfile
 HERE=Path(__file__).resolve().parent
 
 
-def find_root():
-    """Locate the assembly_tp4 root, tolerating both the repo layout
-    (assembly_tp4/tests/this_file) and a flat deploy layout on the Pi
-    (everything in one directory). The root is where camera_capture.py lives."""
-    for candidate in (HERE, HERE.parent, *HERE.parents):
+# Layout after reorg:
+#   pb/assembly/         -> spi_image_client.s, Makefile, build/bin/<binary>
+#   pb/assembly/tests/   -> this file
+#   pb/integration/      -> camera_capture.py (the Python that builds the frame)
+ASM_ROOT = HERE.parent                       # pb/assembly
+PB_ROOT  = ASM_ROOT.parent                   # pb
+
+
+def find_modules():
+    """Find the directory that holds camera_capture.py, across the repo layout
+    (pb/integration) and a flat Pi deploy (everything in one directory)."""
+    for candidate in (PB_ROOT/'integration', ASM_ROOT, HERE, *HERE.parents):
         if (candidate/'camera_capture.py').is_file():
             return candidate
-    raise SystemExit('error: cannot locate camera_capture.py near this test')
+    raise SystemExit('error: cannot locate camera_capture.py (expected in pb/integration)')
 
 
-ROOT=find_root()
-sys.path.insert(0,str(ROOT))
+MODULES=find_modules()
+# ROOT is the assembly tree (where the compiled binary lives); MODULES is where
+# the Python frame builder lives. They differ after the assembly/integration split.
+ROOT=ASM_ROOT
+sys.path.insert(0,str(MODULES))
 from camera_capture import make_frame
 
 
@@ -86,7 +96,7 @@ def main():
         assert packets[1][22]==100
         # Emit the replay hex for the RTL testbench only when the verilog tree
         # is present (dev machine); a flat Pi deploy skips this harmlessly.
-        verilog=ROOT.parent/'verilog_tp4/assessment/sim/build'
+        verilog=PB_ROOT/'verilog/assessment/sim/build'
         if verilog.parent.is_dir():
             verilog.mkdir(exist_ok=True)
             (verilog/'assembly_commands.hex').write_text('\n'.join(f'{x:02x}' for x in data)+'\n')

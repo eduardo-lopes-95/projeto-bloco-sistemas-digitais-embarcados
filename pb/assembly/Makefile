@@ -28,7 +28,7 @@ BIN ?= spi_image_client
 # Example: make run ARGS='frame.bowl commands.bin 100 --emit'
 ARGS ?=
 
-.PHONY: all dirs spi_image_client disasm dump symbols headers debug gdbconnect run test test-assembly clean clean-obj info deps
+.PHONY: all dirs spi_image_client disasm dump symbols headers debug gdbconnect run test-assembly clean clean-obj info deps
 all: $(BINARIES)
 spi_image_client: $(BIN_DIR)/spi_image_client
 
@@ -66,10 +66,8 @@ gdbconnect: $(BIN_DIR)/$(BIN)
 run: $(BIN_DIR)/$(BIN)
 	$(QEMU) $< $(ARGS)
 
-test:
-	$(PYTHON) -m unittest discover -s tests -p test_pipeline.py -v
-	$(PYTHON) -m unittest discover -s tests -p test_preflight.py -v
-
+# Python integration tests moved to ../integration/tests (run them from there).
+# This Makefile keeps only the Assembly-side test that exercises the binary.
 test-assembly: all
 	$(PYTHON) tests/test_assembly_client.py
 

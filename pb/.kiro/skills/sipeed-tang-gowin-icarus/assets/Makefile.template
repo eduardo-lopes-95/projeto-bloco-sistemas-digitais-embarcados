@@ -1,0 +1,40 @@
+# Makefile template — fluxo Icarus Verilog (simulação) + Gowin (síntese) + openFPGALoader (gravação)
+# Adapte as variáveis abaixo para o seu projeto antes de usar.
+
+# --- Ajuste aqui ---
+TOP          := top
+BOARD        := tangnano4k          # tangnano1k | tangnano4k | tangnano9k | tangnano20k
+GOWIN_DEVICE := GW1NSR-LV4CQN48PC7/I6 # confira o part number exato da sua placa/lote
+RTL_SRC      := $(wildcard rtl/*.v rtl/*.sv)
+TB_SRC       := tb/tb_$(TOP).sv
+CST_FILE     := constraints/$(TOP).cst
+SDC_FILE     := constraints/$(TOP).sdc
+BUILD_DIR    := build
+# --------------------
+
+.PHONY: sim wave synth flash clean
+
+# Simulação comportamental com Icarus Verilog
+sim: $(BUILD_DIR)/sim.vvp
+	vvp $(BUILD_DIR)/sim.vvp
+
+$(BUILD_DIR)/sim.vvp: $(RTL_SRC) $(TB_SRC)
+	@mkdir -p $(BUILD_DIR)
+	iverilog -g2012 -Wall -o $@ $(TB_SRC) $(RTL_SRC)
+
+# Abre a forma de onda gerada pela simulação (o testbench deve rodar $dumpfile/$dumpvars)
+wave: sim
+	gtkwave $(BUILD_DIR)/sim.vcd &
+
+# Síntese + place-and-route + bitstream via gw_sh (linha de comando da Gowin)
+# Gera build.tcl a partir do template desta skill antes de rodar, se ainda não existir.
+synth:
+	@mkdir -p $(BUILD_DIR)
+	gw_sh build.tcl
+
+# Grava o bitstream gerado (.fs) na placa via openFPGALoader
+flash:
+	openFPGALoader -b $(BOARD) $(BUILD_DIR)/$(TOP).fs
+
+clean:
+	rm -rf $(BUILD_DIR)

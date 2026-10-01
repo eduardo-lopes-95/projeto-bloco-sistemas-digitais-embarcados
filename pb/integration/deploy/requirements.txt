@@ -1,0 +1,2 @@
+twilio>=9,<10
+python-dotenv>=1,<2

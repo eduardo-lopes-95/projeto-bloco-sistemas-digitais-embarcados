@@ -4,6 +4,8 @@ Sistema embarcado de visão computacional que detecta quando o **pote de ração
 
 A imagem é capturada por um celular rodando o app **IP Webcam**, processada no **Raspberry Pi** e classificada pela **Tang Nano 4K (FPGA Gowin)** via SPI. Quando o pote está vazio, o resultado chega ao Python, que notifica via **API Twilio/WhatsApp**.
 
+![Arquitetura](pb\docs\bowl-monitor-system-architecture.png)
+
 ---
 
 ## Fluxo do sistema
@@ -280,13 +282,3 @@ python3 /home/pi/pb/integration/diagnostics/spi_diag.py
 ```
 
 Se o `state.json` mostrar `"status": "unknown"` com `"error": "TwilioRestException"`, o motivo está no código de erro da Twilio (visível em Monitor → Logs no Console). A causa mais comum é a janela de 24 h do Sandbox ter expirado — refaça o `join` no celular.
-
----
-
-## Documentação técnica
-
-| Documento | Conteúdo |
-|---|---|
-| [`docs/ARQUITETURA_TECNICA_ASSEMBLY_VERILOG.md`](docs/ARQUITETURA_TECNICA_ASSEMBLY_VERILOG.md) | Arquitetura completa: Assembly AArch64, protocolo SPI, RTL Verilog, timing, calibração e formas de onda |
-| [`docs/INTERPRETACAO_FORMA_DE_ONDA.md`](docs/INTERPRETACAO_FORMA_DE_ONDA.md) | Guia de leitura dos sinais no GTKWave |
-| [`docs/RELATORIO_SESSAO_2026-09-28.md`](docs/RELATORIO_SESSAO_2026-09-28.md) | Diagnóstico de campo, calibração óptica e reorganização do repositório |

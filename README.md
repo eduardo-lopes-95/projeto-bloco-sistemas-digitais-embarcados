@@ -1,279 +1,292 @@
-# Dog Bowl Detector
+# Bowl Monitor — Detector de ração via FPGA
 
-Sistema embarcado de visão computacional que detecta automaticamente quando o **pote de ração de um pet está vazio** e envia uma notificação por WhatsApp para o dono.
+Sistema embarcado de visão computacional que detecta quando o **pote de ração de um pet está vazio** e envia uma notificação por WhatsApp para o dono.
 
-O projeto integra dois mundos de hardware:
-
-- **FPGA (Gowin GW1NSR-4C / Tang Nano 4K)** — captura o vídeo de uma câmera OV2640, executa uma pipeline de visão computacional em hardware e decide, frame a frame, se o pote está vazio. O resultado é exposto em um pino GPIO (`alerta_vazio`).
-- **Raspberry Pi Zero 2 W** — lê esse sinal via GPIO usando um programa em **Assembly ARM64**, publica o estado em um arquivo compartilhado e dispara a notificação de WhatsApp através de um serviço Python.
-
-Este repositório contém a evolução do trabalho em vários TPs. **A versão mais atual e completa está na pasta [`tp4/`](tp4/)** e é a documentada aqui.
+A imagem é capturada por um celular rodando o app **IP Webcam**, processada no **Raspberry Pi** e classificada pela **Tang Nano 4K (FPGA Gowin)** via SPI. Quando o pote está vazio, o resultado chega ao Python, que notifica via **API Twilio/WhatsApp**.
 
 ---
 
-## Índice
-
-- [Arquitetura](#arquitetura)
-- [Estrutura do repositório](#estrutura-do-repositório)
-- [Pré-requisitos de hardware](#pré-requisitos-de-hardware)
-- [Parte 1 — FPGA (Verilog / Gowin)](#parte-1--fpga-verilog--gowin)
-- [Parte 2 — Raspberry Pi (Assembly ARM64)](#parte-2--raspberry-pi-assembly-arm64)
-- [Parte 3 — Notificação por WhatsApp](#parte-3--notificação-por-whatsapp)
-- [Executando o sistema completo](#executando-o-sistema-completo)
-- [Simulação e depuração](#simulação-e-depuração)
-
----
-
-## Arquitetura
+## Fluxo do sistema
 
 ```
- ┌──────────────┐   vídeo    ┌──────────────────────────────────────────┐
- │ Câmera OV2640 │ ─────────▶ │  FPGA Gowin GW1NSR-4C (Tang Nano 4K)      │
- └──────────────┘   (DVP)    │                                            │
-                             │  Frame Buffer (HyperRAM)                   │
-                             │        │                                   │
-                             │        ▼                                   │
-                             │  Pipeline de Visão:                        │
-                             │   RGB→Gray → ROI → Erosão 3x3 →            │
-                             │   Detection Engine (histerese) → Overlay   │
-                             │        │                    │              │
-                             │        ▼                    ▼              │
-                             │   alerta_vazio (GPIO)    HDMI (debug)      │
-                             └────────┼───────────────────────────────────┘
-                                      │ nível lógico (GPIO 22)
-                                      ▼
-                             ┌──────────────────────────────┐
-                             │ Raspberry Pi Zero 2 W          │
-                             │  gpio_poll.s (Assembly ARM64)  │
-                             │   • lê GPIO 22 (sinal da FPGA) │
-                             │   • acende LED no GPIO 21      │
-                             │   • escreve /dev/shm/status_pote│
-                             └───────────────┬────────────────┘
-                                             │ arquivo de status
-                                             ▼
-                             ┌──────────────────────────────┐
-                             │ whatsapp_api.py (Python)       │
-                             │   • monitora o status          │
-                             │   • envia WhatsApp via Twilio  │
-                             └────────────────────────────────┘
+Celular (IP Webcam)
+    │ snapshot HTTP
+    ▼
+Python + ffmpeg (Raspberry Pi)
+    │ converte para GRAY8 160×120, grava frame.bowl
+    ▼
+Cliente Assembly AArch64 (spi_image_client)
+    │ protocolo SPI (MOSI/MISO/SCLK/CS)
+    ▼
+FPGA Tang Nano 4K (RTL Verilog)
+    │ conta pixels, decide por maioria
+    ▼
+Python (bowl_notifier / check_bowl.sh)
+    │ API Twilio
+    ▼
+WhatsApp do dono
 ```
 
-O fluxo em uma frase: a **FPGA decide** se o pote está vazio, o **Assembly no Raspberry Pi lê essa decisão** via GPIO e o **Python notifica** o dono pelo WhatsApp.
+A FPGA não recebe JPEG, HTTP nem canais RGB. Ela recebe bytes de luminância (0–255) empacotados no protocolo SPI `BW` e decide: **maioria de pixels claros acima do threshold = pote vazio**.
 
 ---
 
 ## Estrutura do repositório
 
 ```
-projeto-bloco-sistemas-digitais-embarcados/
-├── README.md
-└── tp4/                            ← versão mais atual (documentada aqui)
-    ├── assembly_tp4/               ← código do Raspberry Pi
-    │   ├── gpio_poll.s             ← polling do GPIO + escrita de status (programa principal)
-    │   ├── gpio_map.s              ← demonstração comentada do mapa de registradores GPIO
-    │   ├── command_processor.s     ← console de comandos (status/blink/log/reset/help)
-    │   ├── whatsapp_api.py         ← envio de notificação via Twilio
-    │   ├── start_detector.sh       ← script que sobe todo o pipeline no Pi
-    │   ├── Makefile                ← build/disasm/debug do Assembly (as, ld, objdump, gdb)
-    │   └── .env.example            ← template das variáveis (Twilio + números)
-    ├── verilog_tp4/
-    │   └── assessment/             ← projeto Gowin (abrir assessment.gprj)
-    │       └── src/
-    │           ├── video_top.v            ← top-level (câmera → pipeline → HDMI/GPIO)
-    │           ├── vision_pipeline/       ← rgb2gray, roi_window, erosion_3x3,
-    │           │                             detection_engine, video_overlay
-    │           ├── fsm/                    ← detector_top, fsm_detector, pixel_counter
-    │           ├── ov2640/                 ← driver da câmera (SCCB/I2C)
-    │           ├── hyperram_memory_interface/, video_frame_buffer/, dvi_tx/, syn_code/
-    │           ├── dk_video.cst            ← constraints de pinos (pinout da placa)
-    │           └── dk_video.sdc            ← constraints de timing
-    └── docs_tp4/                   ← diagramas, waveforms, disassembly, relatório técnico
+pb/
+├── assembly/                      ← cliente Assembly AArch64
+│   ├── spi_image_client.s         ← programa principal (sem libc, syscalls diretas)
+│   ├── Makefile
+│   └── tests/
+│       └── test_assembly_client.py
+│
+├── integration/                   ← todo o Python
+│   ├── camera_capture.py          ← captura HTTP, conversão ffmpeg, protocolo BOWL, SPI
+│   ├── bowl_notifier.py           ← política de notificação (episódio, anti-spam, Twilio)
+│   ├── check_bowl.sh              ← script único sob demanda (venv → câmera → FPGA → notify)
+│   ├── deploy/
+│   │   ├── preflight.py           ← validação de configuração e câmera
+│   │   ├── requirements.txt
+│   │   ├── camera.env.example     ← template: URL, THRESHOLD, INVERT_ARGS, CROP_ARGS
+│   │   ├── whatsapp.env.example   ← template: credenciais Twilio
+│   │   ├── bowl-capture.service   ← serviço systemd de captura contínua
+│   │   └── bowl-notifier.service  ← serviço systemd de notificação contínua
+│   ├── diagnostics/
+│   │   ├── spi_diag.py            ← diagnóstico em camadas do SPI
+│   │   ├── wire_check.py          ← teste de continuidade do cabeamento
+│   │   └── make_test_frame.py     ← gera frame .bowl sintético sem câmera
+│   └── tests/
+│       ├── test_pipeline.py
+│       └── test_preflight.py
+│
+├── verilog/
+│   └── assessment/
+│       ├── src/spi_image/
+│       │   ├── spi_slave_mode0.v   ← recepção/transmissão serial, sincronizadores
+│       │   ├── spi_image_top.v     ← enquadramento, CRC, FSM, BSRAM
+│       │   └── gray_bowl_detector.v← contadores de pixels e decisão por maioria
+│       └── sim/
+│           ├── tb_spi_image.v      ← testbench geral (31 verificações)
+│           ├── tb_bowl_empty.v     ← testbench focado em vazio (36 verificações)
+│           ├── tb_bowl_silent.v    ← testbench adversarial / falhas silenciosas (27 verificações)
+│           └── tb_assembly_replay.v← replay dos bytes gerados pelo Assembly
+│
+└── docs/
+    ├── ARQUITETURA_TECNICA_ASSEMBLY_VERILOG.md  ← documentação técnica completa
+    ├── RELATORIO_SESSAO_2026-09-28.md           ← diagnóstico e calibração
+    ├── INTERPRETACAO_FORMA_DE_ONDA.md           ← guia GTKWave
+    └── evidencias/                              ← fotos, capturas de tela, logs
 ```
 
 ---
 
 ## Pré-requisitos de hardware
 
-- Placa FPGA **Gowin GW1NSR-4C** (part `GW1NSR-LV4CQN48PC6/I5`) — o alvo usado é a Tang Nano 4K.
-- Câmera **OV2640** conectada à FPGA (interface DVP + SCCB).
-- Monitor **HDMI** (opcional, apenas para depuração visual com o overlay).
-- **Raspberry Pi Zero 2 W** com Raspberry Pi OS (64-bit).
-- Um jumper ligando o pino de saída `alerta_vazio` da FPGA ao **GPIO 22 (pino físico 15)** do Raspberry Pi, e um GND comum entre as placas.
-- LED indicador opcional no **GPIO 21 (pino físico 40)** do Raspberry Pi.
+| Componente | Detalhe |
+|---|---|
+| FPGA | Sipeed Tang Nano 4K (GW1NSR-LV4CQN48PC6/I5) |
+| Raspberry Pi | Qualquer modelo com Linux AArch64 de 64 bits |
+| Celular | App **IP Webcam** (Android) servindo `/shot.jpg` |
+| Cabeamento SPI | MOSI (Pi 19 → Tang 42), MISO (Pi 21 → Tang 43), SCLK (Pi 23 → Tang 41), CS (Pi 24 → Tang 40), GND comum |
 
-> ⚠️ **Níveis de tensão:** os GPIOs do Raspberry Pi operam em 3,3 V. Garanta que a saída da FPGA esteja em 3,3 V (não 1,8 V/5 V) antes de conectar diretamente, para não danificar o Pi.
-
----
-
-## Parte 1 — FPGA (Verilog / Gowin)
-
-O código Verilog implementa a captura de vídeo e a pipeline de detecção. O módulo top-level é `video_top.v`, e o núcleo de decisão está em `vision_pipeline/`:
-
-| Estágio | Módulo | Função |
-|---------|--------|--------|
-| 1 | `rgb2gray.v` | Converte RGB565 → tons de cinza (BT.601) |
-| 2 | `roi_window.v` | Restringe a análise à região central onde o pote fica |
-| 3 | `erosion_3x3.v` | Filtro morfológico que remove ruído/reflexos pontuais |
-| 4 | `detection_engine.v` | Conta pixels claros e aplica histerese (dual threshold + confirmação multi-frame) |
-| 5 | `video_overlay.v` | Desenha bounding box e status sobre a imagem enviada ao HDMI |
-
-A saída `alerta_vazio` é levada ao pino `O_led[0]`, que também serve como sinal para o Raspberry Pi. Há ainda uma FSM alternativa mais simples em `fsm/` (`detector_top` + `fsm_detector` + `pixel_counter`) usada em simulação e nos TPs anteriores.
-
-### Opção A — IDE Gowin (fluxo recomendado para gravar na placa)
-
-1. Instale o **Gowin EDA** (Gowin IDE) e o driver USB da sua placa.
-2. Abra o projeto: `File → Open Project` e selecione
-   `tp4/verilog_tp4/assessment/assessment.gprj`.
-3. Confirme o dispositivo: **GW1NSR-4C** (`GW1NSR-LV4CQN48PC6/I5`). O pinout já está definido em `src/dk_video.cst` e o timing em `src/dk_video.sdc`.
-4. Rode **Synthesize** e depois **Place & Route**. O bitstream é gerado em
-   `impl/pnr/assessment.fs`.
-5. Abra o **Programmer**, conecte a placa e grave:
-   - `SRAM Program` para teste volátil (perde ao desligar), ou
-   - `embFlash / external Flash` para gravação persistente.
-6. Com a câmera apontada para o pote, o pino `alerta_vazio` (`O_led[0]`) fica em nível alto quando o pote está vazio. Opcionalmente ligue o HDMI para ver o overlay.
-
-### Opção B — Visual Studio Code (edição + simulação)
-
-O VS Code não grava a FPGA, mas é ótimo para editar o Verilog e simular com ferramentas open-source:
-
-1. Instale extensões úteis (ex.: *Verilog-HDL/SystemVerilog* para syntax highlight e linting).
-2. Instale o **Icarus Verilog** (`iverilog`/`vvp`) e o **GTKWave**.
-3. Compile e simule um testbench, por exemplo a FSM do detector:
-   ```bash
-   cd tp4/verilog_tp4/assessment/src/fsm
-   iverilog -o sim_fsm.vvp tb_fsm_detector.v detector_top.v fsm_detector.v pixel_counter.v
-   vvp sim_fsm.vvp
-   gtkwave onda_fsm_detector.vcd
-   ```
-4. Para a gravação na placa, volte à Opção A (Gowin IDE) — é o passo obrigatório para colocar o bitstream na FPGA.
+Os sinais SPI operam em 3,3 V (Banco 1 da Tang, LVCMOS33). Habilite o SPI no Raspberry com `sudo raspi-config` → Interface Options → SPI.
 
 ---
 
-## Parte 2 — Raspberry Pi (Assembly ARM64)
+## Quickstart (modo sob demanda)
 
-O programa principal é `gpio_poll.s`. Ele acessa os registradores GPIO diretamente via `/dev/gpiomem` + `mmap`, faz polling do **GPIO 22** (sinal vindo da FPGA), acende o LED no **GPIO 21** e grava o estado em `/dev/shm/status_pote` (`0` = cheio, `1` = vazio). O mapeamento completo dos registradores está documentado em `gpio_map.s`.
+Esta é a forma mais rápida de testar o sistema sem instalar serviços.
 
-### Toolchain
+### 1. Copiar os arquivos para o Raspberry
 
-Você pode compilar de duas formas:
-
-**Nativamente no Raspberry Pi** (recomendado):
-```bash
-sudo apt update
-sudo apt install binutils gcc make gdb   # as, ld, objdump, gdb
+```powershell
+# No PowerShell do Windows, na raiz do repositório:
+ssh pi@SEU_IP "mkdir -p /home/pi/pb"
+scp -r pb/assembly pb/integration pi@SEU_IP:/home/pi/pb/
 ```
 
-**Por cross-compilação** (em um PC x86 com Linux/WSL):
-```bash
-sudo apt install binutils-aarch64-linux-gnu gdb-multiarch qemu-user
-```
-
-### Build
-
-O `Makefile` cuida da montagem e linkagem estática de todos os `.s`:
+### 2. Compilar o cliente Assembly (no Raspberry)
 
 ```bash
-cd tp4/assembly_tp4
-
-# Compilação nativa (no próprio Raspberry Pi):
+cd /home/pi/pb/assembly
 make
-
-# Cross-compilação (a partir de x86/WSL):
-make PREFIX=aarch64-linux-gnu
+ls -l build/bin/spi_image_client   # confirmar que compilou
 ```
 
-Os binários ficam em `build/bin/` (`gpio_poll`, `gpio_map`, `command_processor`).
+### 3. Configurar os .env (no Raspberry)
 
-Outros targets úteis:
 ```bash
-make disasm      # gera disassembly comentado em disasm/*.txt (objdump -d -S)
-make symbols BIN=gpio_poll   # tabela de símbolos
-make info        # mostra a configuração do toolchain
-make clean       # remove artefatos
+cd /home/pi/pb/integration
+cp deploy/camera.env.example camera.env
+cp deploy/whatsapp.env.example whatsapp.env
+chmod 600 camera.env whatsapp.env
+nano camera.env      # ajuste CAMERA_URL, THRESHOLD e INVERT_ARGS
+nano whatsapp.env    # preencha as credenciais Twilio
 ```
 
-### Console de comandos (opcional)
+Valores calibrados para o cenário com fundo escuro (ração clara):
 
-`command_processor.s` gera um binário interativo de demonstração (comandos `status`, `threshold`, `blink`, `log`, `reset`, `help`). Ele exercita loops, estruturas if/else e jump tables em Assembly:
 ```bash
-./build/bin/command_processor
+THRESHOLD=175
+INVERT_ARGS=--invert
 ```
+
+### 4. Rodar em modo dry-run (sem enviar WhatsApp)
+
+```bash
+bash /home/pi/pb/integration/check_bowl.sh --dry-run
+```
+
+Saída esperada:
+```
+[OK] venv e pacotes prontos
+[OK] camera respondeu e converteu para GRAY8
+[OK] FPGA respondeu: claros=.../19200
+>>> POTE VAZIO <<<   (ou "Pote nao esta vazio.")
+[dry-run] delegando ao bowl_notifier sem enviar...
+```
+
+### 5. Enviar a notificação de verdade
+
+```bash
+bash /home/pi/pb/integration/check_bowl.sh
+```
+
+Códigos de saída: `0` = vazio (notificação enviada), `10` = não vazio, `1` = falha.
 
 ---
 
-## Parte 3 — Notificação por WhatsApp
+## Modo serviço (execução contínua no boot)
 
-`whatsapp_api.py` monitora o arquivo `/dev/shm/status_pote` e, na transição de **cheio → vazio**, envia uma mensagem de WhatsApp usando a API da **Twilio**. Ele evita spam disparando apenas na mudança de estado.
-
-Nada é hardcoded no código: as credenciais **e os números de WhatsApp** são lidos do arquivo `.env`. Se alguma variável obrigatória estiver faltando, o programa avisa e não inicia.
-
-### Passo 1 — Criar uma conta na Twilio e obter as credenciais
-
-O envio de WhatsApp depende de uma conta própria na Twilio. As secrets **não são versionadas** — cada pessoa precisa gerar as suas:
-
-1. Crie uma conta gratuita em [twilio.com](https://www.twilio.com/try-twilio).
-2. No [Console da Twilio](https://www.twilio.com/console), copie o seu **`TWILIO_ACCOUNT_SID`** e o **`TWILIO_AUTH_TOKEN`**.
-3. Ative o **WhatsApp Sandbox** (menu *Messaging → Try it out → Send a WhatsApp message*). Anote o número de origem do sandbox (normalmente `+14155238886`) e siga as instruções para vincular o seu próprio número (enviar o código `join ...` para o sandbox).
-
-### Passo 2 — Configurar o ambiente e o `.env`
-
-1. Crie um ambiente virtual e instale as dependências (no Raspberry Pi):
-   ```bash
-   cd tp4/assembly_tp4
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install twilio python-dotenv
-   ```
-2. Copie o template `.env.example` para `.env` e preencha com **os seus** valores:
-   ```bash
-   cp .env.example .env
-   ```
-   ```env
-   TWILIO_ACCOUNT_SID=seu_account_sid
-   TWILIO_AUTH_TOKEN=seu_auth_token
-   WHATSAPP_NUMBER_FROM=+14155238886     # número/sandbox da Twilio (origem)
-   WHATSAPP_NUMBER_TO=+55XXXXXXXXXXX      # SEU WhatsApp (destino do alerta)
-   ```
-   Os números devem estar no formato internacional **E.164** (ex.: `+5521982974271`). O número de destino (`WHATSAPP_NUMBER_TO`) é para **onde a notificação será enviada** — informe o seu próprio WhatsApp.
-
-> 🔒 **Segurança:** nunca faça commit do `.env` nem de tokens/recovery codes — o `.gitignore` já bloqueia `.env` e `twilio_2FA_recovery_code.*`, versionando apenas o template `.env.example`. Se alguma credencial já foi exposta em algum commit, revogue e gere um novo token no Console da Twilio.
-
----
-
-## Executando o sistema completo
-
-Com a FPGA já gravada e conectada ao Raspberry Pi, no Pi:
+Para que a captura rode automaticamente e envie notificações sem intervenção:
 
 ```bash
-cd tp4/assembly_tp4
-make                       # compila o Assembly (uma vez)
-chmod +x start_detector.sh
-./start_detector.sh
+# Copiar os serviços systemd
+sudo install -m 644 /home/pi/pb/integration/deploy/bowl-capture.service \
+                    /home/pi/pb/integration/deploy/bowl-notifier.service \
+                    /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now bowl-capture bowl-notifier
+
+# Acompanhar logs
+journalctl -u bowl-capture -u bowl-notifier -f
+cat /run/bowl/result.json
+cat /var/lib/bowl-notifier/state.json
 ```
 
-O script `start_detector.sh`:
-1. Encerra execuções antigas de `gpio_poll` e `whatsapp_api.py`.
-2. Sobe o `gpio_poll` (Assembly) em segundo plano — precisa de `sudo` para acessar o GPIO.
-3. Aguarda a criação de `/dev/shm/status_pote`.
-4. Ativa o `venv` e inicia o monitor Python do WhatsApp.
-
-A partir daí: câmera vê o pote vazio → FPGA levanta `alerta_vazio` → Assembly grava `1` no status → Python envia o WhatsApp.
+O serviço de captura publica em `/run/bowl/result.json` a cada ~2 s. O notificador lê esse arquivo e envia o WhatsApp quando detecta 3 frames consecutivos com o pote vazio (`--confirm 3`), sem repetir enquanto o pote continuar vazio.
 
 ---
 
-## Simulação e depuração
+## Calibração óptica (threshold e inversão)
 
-- **Waveforms da FPGA:** arquivos `.vcd` já incluídos em `src/` e `src/fsm/` podem ser abertos no GTKWave. Testbenches: `tb_detector.v`, `tb_testpattern.v`, `tb_fsm_detector.v`, `tb_vision_pipeline.v`.
-- **Depuração do Assembly com GDB + QEMU** (útil em x86/WSL, sem hardware):
-  ```bash
-  make debug BIN=command_processor        # inicia QEMU com gdbserver na porta 1234
-  # em outro terminal:
-  make gdbconnect BIN=command_processor   # conecta o GDB e abre layout asm
-  ```
-- **Execução via QEMU** (rodar um binário ARM64 em x86):
-  ```bash
-  make run BIN=command_processor
-  ```
-- Documentação visual (diagramas, disassembly, tabela de símbolos, arquitetura) está em `tp4/docs_tp4/`, e o relatório técnico completo em
-  `tp4/docs_tp4/Relatório Técnico - TP4 - Dog Bowl Detector.pdf`.
+O detector decide por **maioria de pixels claros = vazio**. A calibração depende do seu cenário físico:
+
+1. Fotografe o pote **cheio** e **vazio** com a mesma iluminação:
+
+```bash
+curl --fail --max-time 10 "SUA_CAMERA_URL" -o /tmp/cheio.jpg
+curl --fail --max-time 10 "SUA_CAMERA_URL" -o /tmp/vazio.jpg
 ```
+
+2. Meça a distribuição de luminância:
+
+```bash
+for estado in cheio vazio; do
+  ffmpeg -y -loglevel error -i /tmp/$estado.jpg \
+    -vf "scale=160:120,format=gray,negate" -f rawvideo /tmp/${estado}_inv.gray
+  python3 -c "
+d=open('/tmp/${estado}_inv.gray','rb').read()
+print('$estado')
+for t in range(140,200,10):
+    c=sum(1 for x in d if x>t)
+    print(f'  thr={t}: claros={c}/{len(d)} ({100*c//len(d)}%)')
+"
+done
+```
+
+3. Escolha o threshold onde cheio < 50% e vazio > 50%, com folga em ambos os lados. O valor `175` foi validado para ração clara sobre fundo escuro (cheio=33%, vazio=81%).
+
+Se o seu cenário for inverso (fundo claro, ração escura), remova o `INVERT_ARGS` do `camera.env`.
+
+---
+
+## Simulação Verilog
+
+Requisito: Icarus Verilog (`iverilog`/`vvp`) e GTKWave.
+
+```bash
+cd pb/verilog/assessment/sim
+mkdir build
+
+# Compilar e rodar todos os testbenches
+S="../src/spi_image/gray_bowl_detector.v ../src/spi_image/spi_slave_mode0.v ../src/spi_image/spi_image_top.v"
+
+iverilog -g2012 -s tb_spi_image    -o build/unit.vvp   tb_spi_image.v    $S && vvp build/unit.vvp
+iverilog -g2012 -s tb_bowl_empty   -o build/empty.vvp  tb_bowl_empty.v   $S && vvp build/empty.vvp
+iverilog -g2012 -s tb_bowl_silent  -o build/silent.vvp tb_bowl_silent.v  $S && vvp build/silent.vvp
+
+# Abrir formas de onda no GTKWave
+gtkwave build/tb_bowl_empty.vcd &
+gtkwave build/tb_bowl_silent.vcd &
+```
+
+Resultados esperados:
+- `tb_spi_image`: PASS: 31 respostas verificadas
+- `tb_bowl_empty`: PASS: 36 respostas (vazio/não-vazio por margem de 1 pixel, single e multibloco)
+- `tb_bowl_silent`: PASS: 27 respostas (6 testes adversariais de falhas silenciosas)
+
+---
+
+## Configuração Twilio
+
+O envio usa o **Sandbox de WhatsApp** da Twilio para testes. Para operação fora da janela de 24 h, configure um template aprovado.
+
+| Variável | Descrição |
+|---|---|
+| `TWILIO_ACCOUNT_SID` | SID da conta (Console Twilio) |
+| `TWILIO_AUTH_TOKEN` | Token de autenticação |
+| `TWILIO_WHATSAPP_FROM` | Número remetente no formato `whatsapp:+14155238886` |
+| `TWILIO_WHATSAPP_TO` | Seu número no formato `whatsapp:+55DDDNUMERO` |
+| `TWILIO_CONTENT_SID` | SID de template aprovado (opcional; sem ele usa texto livre, válido só na janela de 24 h) |
+
+Antes de usar, o número destinatário precisa ter enviado `join <palavra>` para o número do Sandbox. Veja as instruções em [Twilio WhatsApp Sandbox](https://www.twilio.com/docs/whatsapp/sandbox).
+
+> **Segurança:** nunca versione o `whatsapp.env` com credenciais reais. O `.gitignore` já bloqueia arquivos `.env`. Se uma credencial já foi exposta, revogue e gere um novo token no Console da Twilio.
+
+---
+
+## Diagnóstico
+
+```bash
+# Status dos serviços
+systemctl status bowl-capture bowl-notifier --no-pager
+
+# Logs em tempo real
+journalctl -u bowl-capture -u bowl-notifier -f
+
+# Último resultado classificado
+cat /run/bowl/result.json
+
+# Estado do episódio de notificação
+cat /var/lib/bowl-notifier/state.json
+
+# Testar só a câmera
+python3 /home/pi/pb/integration/deploy/preflight.py camera /home/pi/pb/integration
+
+# Diagnóstico do SPI (sem câmera necessária)
+python3 /home/pi/pb/integration/diagnostics/spi_diag.py
+```
+
+Se o `state.json` mostrar `"status": "unknown"` com `"error": "TwilioRestException"`, o motivo está no código de erro da Twilio (visível em Monitor → Logs no Console). A causa mais comum é a janela de 24 h do Sandbox ter expirado — refaça o `join` no celular.
+
+---
+
+## Documentação técnica
+
+| Documento | Conteúdo |
+|---|---|
+| [`docs/ARQUITETURA_TECNICA_ASSEMBLY_VERILOG.md`](docs/ARQUITETURA_TECNICA_ASSEMBLY_VERILOG.md) | Arquitetura completa: Assembly AArch64, protocolo SPI, RTL Verilog, timing, calibração e formas de onda |
+| [`docs/INTERPRETACAO_FORMA_DE_ONDA.md`](docs/INTERPRETACAO_FORMA_DE_ONDA.md) | Guia de leitura dos sinais no GTKWave |
+| [`docs/RELATORIO_SESSAO_2026-09-28.md`](docs/RELATORIO_SESSAO_2026-09-28.md) | Diagnóstico de campo, calibração óptica e reorganização do repositório |

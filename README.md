@@ -4,7 +4,7 @@ Sistema embarcado de visão computacional que detecta quando o **pote de ração
 
 A imagem é capturada por um celular rodando o app **IP Webcam**, processada no **Raspberry Pi** e classificada pela **Tang Nano 4K (FPGA Gowin)** via SPI. Quando o pote está vazio, o resultado chega ao Python, que notifica via **API Twilio/WhatsApp**.
 
-![Arquitetura](pb\docs\bowl-monitor-system-architecture.png)
+![Arquitetura](https://github.com/eduardo-lopes-95/projeto-bloco-sistemas-digitais-embarcados/blob/master/pb/docs/bowl-monitor-system-architecture.png)
 
 ---
 

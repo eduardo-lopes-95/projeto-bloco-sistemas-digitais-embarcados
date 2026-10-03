@@ -6,6 +6,10 @@ A imagem é capturada por um celular rodando o app **IP Webcam**, processada no 
 
 ![Arquitetura](https://github.com/eduardo-lopes-95/projeto-bloco-sistemas-digitais-embarcados/blob/master/pb/docs/bowl-monitor-system-architecture.png)
 
+[![Descrição da Miniatura](https://github.com/eduardo-lopes-95/projeto-bloco-sistemas-digitais-embarcados/blob/master/pb/docs/capa.jpg)](https://drive.google.com/file/d/1rr_9fgjZqT-VU4YjQ4B1Opalmnhmiiak/view?usp=sharing)
+
+[![Título do Vídeo]()](https://youtube.com)
+
 ---
 
 ## Fluxo do sistema
